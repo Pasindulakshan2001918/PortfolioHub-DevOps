@@ -14,11 +14,11 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: http://backend:5000
+        VITE_API_URL: http://13.233.164.96:5000
     ports:
       - "5173:80"
     environment:
-      - VITE_API_URL=http://backend:5000
+      - VITE_API_URL=http://13.233.164.96:5000
     depends_on:
       - backend
 
