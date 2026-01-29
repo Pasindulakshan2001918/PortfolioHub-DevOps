@@ -22,10 +22,8 @@ function Dashboard() {
       try {
         const token = localStorage.getItem("token");
         if (!token) return;
-        const API_URL =
-          window.location.hostname === "localhost"
-            ? "http://localhost:5000"
-            : "http://backend:5000";
+        const API_URL = import.meta.env.VITE_API_URL;
+
         const res = await axios.get(`${API_URL}/api/projects`, {
           headers: { Authorization: `Bearer ${token}` },
         });

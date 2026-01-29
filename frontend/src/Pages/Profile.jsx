@@ -17,10 +17,8 @@ function Profile() {
   const [skills, setSkills] = useState((storedUser?.skills || []).join(", "));
   const [error, setError] = useState("");
 
-  const API_URL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:5000"
-      : "http://backend:5000";
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   const token = localStorage.getItem("token");
 
