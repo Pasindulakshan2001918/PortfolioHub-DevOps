@@ -22,7 +22,7 @@ function Dashboard() {
       try {
         const token = localStorage.getItem("token");
         if (!token) return;
-        const API_URL = import.meta.env.VITE_API_URL;
+        const API_URL = import.meta.env.VITE_API_URL || "http://13.233.164.96:5000";
 
         const res = await axios.get(`${API_URL}/api/projects`, {
           headers: { Authorization: `Bearer ${token}` },
