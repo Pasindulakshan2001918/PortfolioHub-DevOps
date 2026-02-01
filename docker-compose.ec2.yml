@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:7.0
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+    container_name: portfoliohub-mongo
+
+  backend:
+    image: lpasindu923/portfoliohub-backend1:latest
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      MONGO_URI: mongodb://portfoliohub-mongo:27017/portfoliohub
+      JWT_SECRET: your_super_secret_key
+      NODE_ENV: production
+    depends_on:
+      - mongo
+    container_name: portfoliohub-backend
+
+  frontend:
+    image: lpasindu923/portfoliohub-frontend1:latest
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      VITE_API_URL: http://portfoliohub-backend:5000
+    depends_on:
+      - backend
+    container_name: portfoliohub-frontend
+
+volumes:
+  mongo_data:
