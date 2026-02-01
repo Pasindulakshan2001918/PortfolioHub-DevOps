@@ -9,7 +9,7 @@ function SignUp() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://13.201.7.57:5000";
+  const API_URL = import.meta.env.VITE_API_URL 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
