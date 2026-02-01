@@ -2,30 +2,10 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-# 🔹 Read EXISTING Security Group
+# 🔹 Read EXISTING Security Group (already created in AWS)
 data "aws_security_group" "portfoliohub_sg" {
   name   = "portfoliohub-sg"
   vpc_id = "vpc-07e5875498eb3ffa1"
-}
-
-# 🔹 Add HTTP rule to existing Security Group (port 80)
-resource "aws_security_group_rule" "allow_http" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  security_group_id = data.aws_security_group.portfoliohub_sg.id
-  cidr_blocks       = ["0.0.0.0/0"]
-}
-
-# 🔹 Add SSH rule if you want to connect manually (optional, port 22)
-resource "aws_security_group_rule" "allow_ssh" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  security_group_id = data.aws_security_group.portfoliohub_sg.id
-  cidr_blocks       = ["0.0.0.0/0"]
 }
 
 # 🔹 EC2 Instance
@@ -44,4 +24,3 @@ resource "aws_instance" "portfoliohub_ec2" {
     Name = "PortfolioHub-EC2"
   }
 }
-
