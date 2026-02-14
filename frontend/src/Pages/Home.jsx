@@ -18,7 +18,7 @@ function Home() {
           Showcase Your <span className="text-blue-500">Skills</span> & <span className="text-purple-500">Projects</span>
         </h2>
         <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8">
-          PortfolioHub is your digital identity. Build your portfolio, share projects, and highlight your journey as a developer.
+          PASINDU LAKSHAN
         </p>
         <div className="flex space-x-4">
           <Link to="/signup" className="px-6 py-3 bg-blue-500 rounded-lg text-lg hover:bg-blue-600 transition">Get Started</Link>
